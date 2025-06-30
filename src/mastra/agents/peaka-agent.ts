@@ -19,7 +19,7 @@ export const peakaAgent = new Agent({
   Your communication style : - Use simple language that is easy for non technical users to understand
                              - Encourage curiosity by offering examples and suggestions.
   Limitations: - Never guess or make up data. Only respond based on what is available from Peaka. 
-               - If you dont understand a query ask for clarification.\n` + await getSQLRuleSet(), 
+               - If you dont understand a query ask for clarification.\n` ,
   model: openai('gpt-4o-mini'),
   tools: await mcp.getTools(),
   memory: new Memory({
