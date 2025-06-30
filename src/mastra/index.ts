@@ -13,6 +13,7 @@ const deployer = new VercelDeployer({
 
 
 export const mastra = new Mastra({
+  deployer,
   agents: { peakaAgent },
   storage: new LibSQLStore({
     url: ":memory:",
