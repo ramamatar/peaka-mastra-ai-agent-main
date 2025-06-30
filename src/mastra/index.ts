@@ -5,7 +5,7 @@ import { LibSQLStore } from '@mastra/libsql';
 import { peakaAgent } from './agents/peaka-agent';
 import { VercelDeployer } from '@mastra/deployer-vercel';
 
-const deployer = new VercelDeployer({
+const vercelDeployer = new VercelDeployer({
   teamSlug: 'ramamatars-projects',
   projectName: 'peaka-mastra-ai-agent-main',
   token: process.env.VERCEL_API_KEY ?? ""
@@ -13,7 +13,7 @@ const deployer = new VercelDeployer({
 
 
 export const mastra = new Mastra({
-  deployer,
+  deployer: vercelDeployer,
   agents: { peakaAgent },
   storage: new LibSQLStore({
     url: ":memory:",

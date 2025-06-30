@@ -1,8 +1,4 @@
-import { createTool } from "@mastra/core";
 import { MCPClient } from "@mastra/mcp";
-import { VercelDeployer } from '@mastra/deployer-vercel';
-
-const deployer = new VercelDeployer();
 
 export const mcp = new MCPClient({
   servers: {
