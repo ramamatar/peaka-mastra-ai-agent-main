@@ -3,7 +3,7 @@
   "installCommand": "npm install --omit=dev",
   "builds": [
     {
-      "src": "index.js",
+      "src": "index.ts",
       "use": "@vercel/node",
       "config": {
         "includeFiles": ["**"]
@@ -13,7 +13,7 @@
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "index.js"
+      "dest": "index.ts"
     }
   ]
 }
