@@ -8,7 +8,7 @@ import { VercelDeployer } from '@mastra/deployer-vercel';
 const deployer = new VercelDeployer({
   teamSlug: 'ramamatars-projects',
   projectName: 'peaka-mastra-ai-agent-main',
-  token: 'prj_Zg4of0C2QtsrwqHeV8O2UWeo7eBX',
+  token: process.env.VERCEL_API_KEY ?? ""
 });
 
 
