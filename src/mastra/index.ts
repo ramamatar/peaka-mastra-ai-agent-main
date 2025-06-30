@@ -3,6 +3,14 @@ import { Mastra } from '@mastra/core/mastra';
 import { PinoLogger } from '@mastra/loggers';
 import { LibSQLStore } from '@mastra/libsql';
 import { peakaAgent } from './agents/peaka-agent';
+import { VercelDeployer } from '@mastra/deployer-vercel';
+
+const deployer = new VercelDeployer({
+  teamSlug: 'ramamatars-projects',
+  projectName: 'peaka-mastra-ai-agent-main',
+  token: 'prj_Zg4of0C2QtsrwqHeV8O2UWeo7eBX',
+});
+
 
 export const mastra = new Mastra({
   agents: { peakaAgent },
