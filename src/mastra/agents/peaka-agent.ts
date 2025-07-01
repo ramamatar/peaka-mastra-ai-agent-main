@@ -1,7 +1,5 @@
 import { openai } from '@ai-sdk/openai';
 import { Agent } from '@mastra/core/agent';
-import { Memory } from '@mastra/memory';
-import { LibSQLStore } from '@mastra/libsql';
 import { getSQLRuleSet, mcp } from '../agents/mcp';
  
 export const peakaAgent = new Agent({
@@ -22,9 +20,4 @@ export const peakaAgent = new Agent({
                - If you dont understand a query ask for clarification.\n` ,
   model: openai('gpt-4o-mini'),
   tools: await mcp.getTools(),
-  memory: new Memory({
-    storage: new LibSQLStore({
-      url: 'file:../mastra.db', 
-    }),
-  }),
 });
