@@ -1,12 +1,11 @@
-import { openai } from '@ai-sdk/openai';
-import { Agent } from '@mastra/core/agent';
-import { Memory } from '@mastra/memory';
-import { LibSQLStore } from '@mastra/libsql';
-import { getSQLRuleSet, mcp } from '../agents/mcp';
- 
+import { openai } from "@ai-sdk/openai";
+import { Agent } from "@mastra/core/agent";
+import { getSQLRuleSet, mcp } from "./mcp";
+
 export const peakaAgent = new Agent({
-  name: 'Peaka Data Assistant',
-  instructions: `You are a helpful and knowledgeable assistant that interacts with users to answer questions using Peakas Sample data. 
+  name: "Peaka Data Assistant",
+  instructions:
+    `You are a helpful and knowledgeable assistant that interacts with users to answer questions using Peakas Sample data. 
   Your main goals:
     - Clearly answer user questions using the available launch and mission data.
     - Query Peakas sample data to return relavant and accurate results.
@@ -19,12 +18,8 @@ export const peakaAgent = new Agent({
   Your communication style : - Use simple language that is easy for non technical users to understand
                              - Encourage curiosity by offering examples and suggestions.
   Limitations: - Never guess or make up data. Only respond based on what is available from Peaka. 
-               - If you dont understand a query ask for clarification.\n` ,
-  model: openai('gpt-4o-mini'),
+               - If you dont understand a query ask for clarification.\n` +
+    (await getSQLRuleSet()),
+  model: openai("gpt-4o-mini"),
   tools: await mcp.getTools(),
-  memory: new Memory({
-    storage: new LibSQLStore({
-      url: 'file:../mastra.db', 
-    }),
-  }),
 });
