@@ -1,9 +1,8 @@
-
-import { Mastra } from '@mastra/core/mastra';
-import { PinoLogger } from '@mastra/loggers';
-import { LibSQLStore } from '@mastra/libsql';
-import { peakaAgent } from './agents/peaka-agent';
-import { VercelDeployer } from '@mastra/deployer-vercel';
+import { Mastra } from "@mastra/core/mastra";
+import { PinoLogger } from "@mastra/loggers";
+import { peakaAgent } from "./agents/peaka-agent";
+import { VercelDeployer } from "@mastra/deployer-vercel";
+import { LibSQLStore } from "@mastra/libsql";
 
 export const mastra = new Mastra({
   deployer: new VercelDeployer(),
@@ -12,7 +11,7 @@ export const mastra = new Mastra({
     url: ":memory:",
   }),
   logger: new PinoLogger({
-    name: 'Mastra',
-    level: 'info',
+    name: "Mastra",
+    level: "info",
   }),
 });
